@@ -16,7 +16,7 @@
         <h1>제품관리 대시보드 (Product Management Dashboard)</h1>
         <div class="content_area">
             <div class="product_info">
-                <h2><i class="fas fa-laptop"></i> 제품 정보</h2>
+                <h2><i class="fas fa-box-open"></i> 제품 정보</h2>
                 <p>총 등록 제품 : <span>${cnt.product[0]}개</span></p>
                 <p>총 판매된 제품 : <span>${cnt.product[1]}개</span></p>
                 <p>구매정지된 제품 : <span>${cnt.product[2]}개</span></p>
@@ -24,14 +24,14 @@
                 <p>업데이트 날짜 : <span>2021-12-10 12:00:00</span></p>
             </div>
             <div class="seller_info">
-                <h2><i class="fas fa-user"></i> 판매자 정보</h2>
+                <h2><i class="fas fa-user-circle"></i> 판매자 정보</h2>
                 <p>등록된 판매자 : <span>${cnt.seller[0]}명</span></p>
                 <p>등록대기 중 판매자 : <span>${cnt.seller[1]}명</span></p>
                 <p>사용정지된 판매자 : <span>${cnt.seller[2]}명</span></p>
                 <p>업데이트 날짜 : <span>2021-12-10 12:00:00</span></p>
             </div>
             <div class="buyer_info">
-                <h2><i class="fas fa-user"></i> 일반회원 정보</h2>
+                <h2><i class="fas fa-user-circle"></i> 일반회원 정보</h2>
                 <p>등록된 일반회원 : <span>${cnt.buyer[0]}명</span></p>
                 <p>등록대기 중 일반회원 : <span>${cnt.buyer[1]}명</span></p>
                 <p>사용정지된 일반회원 : <span>${cnt.buyer[2]}명</span></p>
