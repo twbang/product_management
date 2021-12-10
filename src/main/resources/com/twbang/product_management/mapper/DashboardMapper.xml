@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.twbang.product_management.mapper.DashboardMapper">
+    <select id="getTotalProductCnt" resultType="java.lang.Integer">
+        select count(*) from product_info
+    </select>
+    <select id="getSellProductCnt" resultType="java.lang.Integer">
+        select count(*) from product_info where pi_sell=1
+    </select>
+    <select id="getNonpurchaseProductCnt" resultType="java.lang.Integer">
+        select count(*) from product_info where pi_status=1
+    </select>
+    <select id="getFixProductCnt" resultType="java.lang.Integer">
+        select count(*) from product_info where pi_as=1
+    </select>
+
+    <select id="getTotalSellerCnt" resultType="java.lang.Integer">
+        select count(*) from seller_info
+    </select>
+    <select id="getWaitSellerCnt" resultType="java.lang.Integer">
+        select count(*) from seller_info where si_status=1
+    </select>
+    <select id="getSuspendedSellerCnt" resultType="java.lang.Integer">
+        select count(*) from seller_info where si_status=2
+    </select>
+
+    <select id="getTotalBuyerCnt" resultType="java.lang.Integer">
+        select count(*) from buyer_info
+    </select>
+    <select id="getWaitBuyerCnt" resultType="java.lang.Integer">
+        select count(*) from buyer_info where bi_status=1
+    </select>
+    <select id="getSuspendedBuyerCnt" resultType="java.lang.Integer">
+        select count(*) from buyer_info where bi_status=2
+    </select>
+
+    <select id="getTotalPMCnt" resultType="java.lang.Integer">
+        select count(*) from product_manager_info 
+    </select>
+    <select id="getWorkPMCnt" resultType="java.lang.Integer">
+        select count(*) from product_manager_info where pmi_status=0
+    </select>
+    <select id="getDayoffPMCnt" resultType="java.lang.Integer">
+        select count(*) from product_manager_info where pmi_status=1
+    </select>
+
+    <select id="getTotalPGMCnt" resultType="java.lang.Integer">
+        select count(*) from web_manager_info 
+    </select>
+    <select id="getWorkPGMCnt" resultType="java.lang.Integer">
+        select count(*) from web_manager_info where wmi_status=0
+    </select>
+    <select id="getDayoffPGMCnt" resultType="java.lang.Integer">
+        select count(*) from web_manager_info where wmi_status=1
+    </select>
+</mapper>
