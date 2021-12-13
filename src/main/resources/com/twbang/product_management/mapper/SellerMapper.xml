@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.twbang.product_management.mapper.SellerMapper">
+    <select id="getSellerInfo" resultType="com.twbang.product_management.data.SellerVO">
+        select * from seller_info order by si_seq desc limit 10 offset #{offset}
+    </select>
+    <select id="getSellerCount" resultType="java.lang.Integer">
+        select count(*) from seller_info
+    </select>
+</mapper>

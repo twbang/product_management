@@ -25,8 +25,9 @@
                 <a href="#" id="logout"><i class="fas fa-sign-out-alt"></i> 로그아웃</a>
             </div>
             <div class="main_menu">
-                <a href="#"><i class="fas fa-box-open"></i> 제품 관리</a>
-                <a href="#"><i class="fas fa-user-circle"></i> 판매자 관리</a>
+                <a href="/"><i class="fas fa-columns"></i>대시보드</a>
+                <a href="/product"><i class="fas fa-box-open"></i> 제품 관리</a>
+                <a href="/seller"><i class="fas fa-user-circle"></i> 판매자 관리</a>
                 <a href="#"><i class="fas fa-user-circle"></i> 일반회원 관리</a>
                 <a href="#"><i class="fas fa-user-tie"></i> 제품관리자 관리</a>
                 <a href="#"><i class="fas fa-user-tie"></i> 페이지관리자 관리</a>
