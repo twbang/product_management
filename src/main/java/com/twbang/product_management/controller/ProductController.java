@@ -16,8 +16,8 @@ public class ProductController {
     @Autowired ProductService service;
 
     @GetMapping("/product")
-    public String getProduct(Model model, @RequestParam @Nullable Integer offset) {
-        Map<String, Object> resultMap = service.getProductList(offset);
+    public String getProduct(Model model, @RequestParam @Nullable Integer offset, @RequestParam @Nullable String keyword) {
+        Map<String, Object> resultMap = service.getProductList(offset, keyword);
         model.addAttribute("data", resultMap);
         return "/product/list";
     }

@@ -14,13 +14,25 @@ import org.springframework.stereotype.Service;
 public class ProductService {
     @Autowired ProductMapper mapper;
 
-    public Map<String, Object> getProductList(Integer offset) {
-        if(offset == null) offset=0;
-
+    public Map<String, Object> getProductList(Integer offset, String keyword) {
         Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
-        List<ProductVO> list = mapper.getProductInfo(offset);
 
-        Integer cnt = mapper.getProductCount();
+        if(offset == null) {
+            offset=0;
+            resultMap.put("offset", offset);
+        }
+        if(keyword == null) {
+            keyword="%%";
+            resultMap.put("keyword", "");
+        }
+        else {
+            resultMap.put("keyword", keyword);
+            keyword="%"+keyword+"%";
+        }
+
+        List<ProductVO> list = mapper.getProductInfo(offset,keyword);
+
+        Integer cnt = mapper.getProductCount(keyword);
         Integer page_cnt = cnt/10+(cnt%10>0?1:0);
 
         resultMap.put("status", true);
@@ -60,6 +72,23 @@ public class ProductService {
         mapper.deleteProduct(seq);
         resultMap.put("status", true);
         resultMap.put("message", "제품이 삭제되었습니다.");
+        return resultMap;
+    }
+
+    public Map<String, Object> getProductInfoBySeq(Integer seq) {
+        Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
+        resultMap.put("status", true);
+        resultMap.put("data", mapper.getProductInfoBySeq(seq));
+        return resultMap;
+    }
+
+    public Map<String, Object> updateProductInfo(ProductVO data) {
+        Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
+
+        mapper.updateProduct(data);
+
+        resultMap.put("status", true);
+        resultMap.put("message", "수정되었습니다.");
         return resultMap;
     }
 }
