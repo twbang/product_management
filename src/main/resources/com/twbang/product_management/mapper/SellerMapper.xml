@@ -8,4 +8,12 @@
     <select id="getSellerCount" resultType="java.lang.Integer">
         select count(*) from seller_info
     </select>
+    <insert id="addSeller">
+        insert into seller_info(si_id,si_pwd,si_birth,si_email,si_name,si_address,si_phone_number,si_status)
+        values
+        (#{si_id},#{si_pwd},#{si_birth},#{si_email},#{si_name},#{si_address},#{si_phone_number},#{si_status})
+    </insert>
+    <delete id="deleteSeller">
+        delete from seller_info where si_seq=#{seq}
+    </delete>
 </mapper>

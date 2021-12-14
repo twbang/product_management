@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class SellerController {
-    @Autowired SellerService service;
+    @Autowired
+    SellerService service;
+
     @GetMapping("/seller")
     public String getSeller(Model model, @RequestParam @Nullable Integer offset) {
         Map<String, Object> resultMap = service.getSellerList(offset);

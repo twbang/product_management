@@ -9,5 +9,10 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface SellerMapper {
     public List<SellerVO> getSellerInfo(Integer offset);
+
     public Integer getSellerCount();
+
+    public void addSeller(SellerVO data);
+
+    public void deleteSeller(Integer seq);
 }
