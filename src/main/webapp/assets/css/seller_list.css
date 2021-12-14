@@ -7,7 +7,7 @@ main > h1 {font-size: 36px; padding-bottom: 30px; margin-bottom: 30px; border-bo
     cursor:pointer;
 }
 #add_seller i {margin-right: 5px;}
-#add_seller:hover {background-color: rgb(21, 51, 219);}
+#add_sel:hover {background-color: rgb(21, 51, 219);}
 .search_box {background-color: #fff; display: inline-block; vertical-align: middle;
     padding: 10px 20px; border-radius: 99px; margin-right: 20px;
 }
@@ -63,8 +63,8 @@ font-size: 20px; cursor: pointer;
 .popup_wrap.open {display: block;}
 .popup {
     position: fixed; left: 50%; top: 50%; background-color: #fff;
-    margin-left: -150px; margin-top: -350px;
-    z-index: 999999; padding: 45px 0; width: 500px;
+    margin-left: -150px; margin-top: -425px;
+    z-index: 999999; padding: 35px 0; width: 500px;
     border-radius: 5px;
 }
 .popup .top_area {text-align: center; padding-bottom: 40px; border-bottom: 1px solid #ccc;}
@@ -90,5 +90,7 @@ font-size: 20px; cursor: pointer;
 }
 .btn_area #add_sel {background-color: rgb(151, 165, 245);}
 .btn_area #add_sel:hover {background-color: rgb(21,51,219);}
+.btn_area #modify_sel {background-color: #999;}
+.btn_area #modify_sel:hover {background-color: #333;}
 .btn_area #cancel_sel {background-color: rgb(255,194,194);}
 .btn_area #cancel_sel:hover {background-color: rgb(255,83,83);}

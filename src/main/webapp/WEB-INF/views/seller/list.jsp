@@ -15,7 +15,7 @@
 <body>
     <main>
         <h1><i class="fas fa-user-circle"></i> 판매자 관리</h1>
-        <button id="add_seller"><i class="fas fa-user-circle"> 판매자 정보 추가</button>
+        <button id="add_seller"><i class="fas fa-user-circle"></i> 판매자 정보 추가</button>
         <div class="content_area">
             <div class="menu_area">
                 <div class="search_box">
@@ -94,7 +94,7 @@
         <div class="popup" id="seller_add">
             <div class="top_area">
                 <div class="ico">
-                    <i class="fas fa-user-circle">
+                    <i class="fas fa-user-circle"></i>
                 </div>
                 <h2>판매자 추가</h2>
                 <p>판매자 정보를 입력하세요</p>
@@ -115,6 +115,7 @@
             </div>
             <div class="btn_area">
                 <button id="add_sel">등록하기</button>
+                <button id="modify_sel">수정하기</button>
                 <button id="cancel_sel">취소하기</button>
             </div>
         </div>

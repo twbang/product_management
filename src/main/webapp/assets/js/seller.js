@@ -66,4 +66,10 @@ $(function(){
             }
         })
     })
+
+    let modify_data_seq=0;
+    $(".modify_btn").click(function(){
+        modify_data_seq=$(this).attr("data-seq");
+        
+    })
 })

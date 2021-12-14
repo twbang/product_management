@@ -4,6 +4,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.twbang.product_management.data.ProductHistoryVO;
 import com.twbang.product_management.data.ProductVO;
 import com.twbang.product_management.mapper.ProductMapper;
 
@@ -64,6 +65,15 @@ public class ProductService {
         mapper.addProduct(data);
         resultMap.put("status", true);
         resultMap.put("message", "제품이 추가되었습니다.");
+
+        Integer seq = mapper.selectLatestDataSeq();
+        ProductHistoryVO history = new ProductHistoryVO();
+        history.setDeph_pi_seq(seq);
+        history.setDeph_type("new");
+        String content = data.getPi_name()+"|"+data.getPi_sub()+"|"+data.getPi_price()+"|"+data.getPi_sell()+"|"+data.getPi_as();
+        history.setDeph_content(content);
+        mapper.insertProductHistory(history);
+
         return resultMap;
     }
 
@@ -72,6 +82,11 @@ public class ProductService {
         mapper.deleteProduct(seq);
         resultMap.put("status", true);
         resultMap.put("message", "제품이 삭제되었습니다.");
+
+        ProductHistoryVO history = new ProductHistoryVO();
+        history.setDeph_pi_seq(seq);
+        history.setDeph_type("delete");
+        mapper.insertProductHistory(history);
         return resultMap;
     }
 
@@ -89,6 +104,13 @@ public class ProductService {
 
         resultMap.put("status", true);
         resultMap.put("message", "수정되었습니다.");
+
+        ProductHistoryVO history = new ProductHistoryVO();
+        history.setDeph_pi_seq(data.getPi_seq());
+        history.setDeph_type("update");
+        String content = data.getPi_name()+"|"+data.getPi_sub()+"|"+data.getPi_price()+"|"+data.getPi_sell()+"|"+data.getPi_as();
+        history.setDeph_content(content);
+        mapper.insertProductHistory(history);
         return resultMap;
     }
 }

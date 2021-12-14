@@ -25,4 +25,13 @@
         set pi_name=#{pi_name},pi_sub=#{pi_sub},pi_price=#{pi_price},pi_sell=#{pi_sell},pi_as=#{pi_as},pi_mod_dt=NOW()
         where pi_seq=#{pi_seq}
     </update>
+    <select id="selectLatestDataSeq" resultType="java.lang.Integer">
+        select pi_seq from product_info
+        order by pi_seq desc limit 1
+    </select>
+    <insert id="insertProductHistory">
+        INSERT INTO product_work_db.department_history
+        (deph_type, deph_content, deph_pi_seq)
+        VALUES(#{deph_type},#{deph_content},#{deph_pi_seq});
+    </insert>
 </mapper>

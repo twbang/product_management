@@ -16,4 +16,13 @@
     <delete id="deleteSeller">
         delete from seller_info where si_seq=#{seq}
     </delete>
+    <select id="getSellerInfoBySeq" resultType="com.twbang.product_management.data.SellerVO">
+        select * from seller_info where si_seq=#{seq}
+    </select>
+    <update id="updateSeller">
+        update seller_info
+        set si_id=#{si_id}, si_pwd=#{si_pwd}, si_birth=#{si_birth}, si_email=#{si_emil}, 
+        si_name=#{si_name}, si_address=#{si_address}, si_phone_number=#{si_phone_number}, si_status=#{si_status}, si_mod_dt=NOW()
+        where si_seq=#{si_seq}
+    </update>
 </mapper>

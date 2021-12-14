@@ -72,7 +72,7 @@ public class SellerService {
         }
 
         mapper.addSeller(data);
-        resultMap.put("Status", true);
+        resultMap.put("status", true);
         resultMap.put("message", "판매자가 추가되었습니다.");
         return resultMap;
     }
@@ -82,6 +82,23 @@ public class SellerService {
         mapper.deleteSeller(seq);
         resultMap.put("status", true);
         resultMap.put("message", "판매자가 삭제되었습니다.");
+        return resultMap;
+    }
+
+    public Map<String, Object> getSellerInfoBySeq(Integer seq) {
+        Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
+        resultMap.put("status", true);
+        resultMap.put("data", mapper.getSellerInfoBySeq(seq) );
+        return resultMap;
+    }
+
+    public Map<String, Object> updateSellerInfo(SellerVO data) {
+        Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
+
+        mapper.updateSeller(data);
+
+        resultMap.put("status", true);
+        resultMap.put("message", "수정되었습니ㅏㄷ.");
         return resultMap;
     }
 }
