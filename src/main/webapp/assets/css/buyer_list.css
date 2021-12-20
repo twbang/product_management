@@ -1,13 +1,13 @@
 main {background-color: #f3f3f3; position: relative;}
 main > h1 {font-size: 36px; padding-bottom: 30px; margin-bottom: 30px; border-bottom: 1px solid #ddd;}
-#add_seller {
+#add_buyer {
     position: absolute; right: 35px; top: 30px;
     border: 0; background-color: rgb(97, 118, 241); color: #fff;
     width: 170px; height: 40px; border-radius: 5px; font-size: 14px; font-weight: 300;
     cursor:pointer;
 }
-#add_seller i {margin-right: 5px;}
-#add_seller:hover {background-color: rgb(21, 51, 219);}
+#add_buyer i {margin-right: 5px;}
+#add_buyer:hover {background-color: rgb(21, 51, 219);}
 .search_box {background-color: #fff; display: inline-block; vertical-align: middle;
     padding: 10px 20px; border-radius: 99px; margin-right: 20px;
 }
@@ -79,7 +79,7 @@ font-size: 20px; cursor: pointer;
 .popup .content_area {padding: 40px 0; width: 350px; margin: 0 auto; font-size: 0;
     padding-bottom: 20px;
 }
-#sel_id,#sel_pwd,#sel_birth,#sel_email,#sel_name, #sel_address, #sel_phone_number, #sel_status {width: 100%; padding: 0; margin: 0; border: 1px solid #ccc;
+#buy_id,#buy_pwd,#buy_birth,#buy_email,#buy_name, #buy_address, #buy_phone_number, #buy_status {width: 100%; padding: 0; margin: 0; border: 1px solid #ccc;
     font-size: 16px; font-weight: 400; padding: 10px 20px; box-sizing: border-box;
     border-radius: 15px; margin-bottom: 15px; outline:  none;
 }
@@ -88,9 +88,9 @@ font-size: 20px; cursor: pointer;
     border: 0; font-size: 18px; padding: 10px 20px; margin: 0 10px; color: #fff;
     cursor: pointer; border-radius: 15px;
 }
-.btn_area #add_sel {background-color: rgb(151, 165, 245);}
-.btn_area #add_sel:hover {background-color: rgb(21,51,219);}
-.btn_area #modify_sel {background-color: rgb(151,165,245);}
-.btn_area #modify_sel:hover {background-color: rgb(21,51,219);}
-.btn_area #cancel_sel {background-color: rgb(255,194,194);}
-.btn_area #cancel_sel:hover {background-color: rgb(255,83,83);}
+.btn_area #add_buy {background-color: rgb(151, 165, 245);}
+.btn_area #add_buy:hover {background-color: rgb(21,51,219);}
+.btn_area #modify_buy {background-color: rgb(151,165,245);}
+.btn_area #modify_buy:hover {background-color: rgb(21,51,219);}
+.btn_area #cancel_buy {background-color: rgb(255,194,194);}
+.btn_area #cancel_buy:hover {background-color: rgb(255,83,83);}

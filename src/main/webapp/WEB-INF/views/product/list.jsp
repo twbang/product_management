@@ -22,7 +22,6 @@
                     <input type="text" id="keyword" placeholder="검색어 입력" value="${data.keyword}">
                     <button id="search_btn"><i class="fas fa-search"></i></button>
                 </div>
-                <button id="reset_btn">초기화</button>
             </div>
             <div class="table_area">
                 <table>
@@ -31,6 +30,7 @@
                             <th>번호</th>
                             <th>제품명</th>
                             <th>제품 설명</th>
+                            <th>제품 카테고리</th>
                             <th>제품 가격</th>
                             <th>제품 추천수</th>
                             <th>등록일</th>
@@ -43,7 +43,7 @@
                     <tbody>
                         <c:if test="${data.list.size() == 0}">
                             <tr>
-                                <td id="nodata" colspan="10">데이터가 없습니다.</td>
+                                <td id="nodata" colspan="11">데이터가 없습니다.</td>
                             </tr>
                         </c:if>
                         <c:forEach items="${data.list}" var="p">
@@ -51,6 +51,7 @@
                                 <td>${p.pi_seq}</td>
                                 <td>${p.pi_name}</td>
                                 <td>${p.pi_sub}</td>
+                                <td>카테고리</td>
                                 <td>${p.pi_price}원</td>
                                 <td>${p.pi_like}</td>
                                 <td>${p.pi_reg_dt}</td>

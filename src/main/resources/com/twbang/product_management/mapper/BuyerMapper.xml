@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.twbang.product_management.mapper.BuyerMapper">
+    <select id="getBuyerInfo" resultType="com.twbang.product_management.data.SellerVO">
+        select * from buyer_info where bi_name like #{keyword}
+        order by bi_seq desc limit 10 offset #{offset}
+    </select>
+    <select id="getBuyerCount" resultType="java.lang.Integer">
+        select count(*) from buyer_info  where bi_name like #{keyword}
+    </select>
+    <insert id="addBuyer">
+        insert into buyer_info(bi_id,bi_pwd,bi_birth,bi_email,bi_name,bi_address,bi_phone_number,bi_status)
+        values
+        (#{bi_id},#{bi_pwd},#{bi_birth},#{bi_email},#{bi_name},#{bi_address},#{bi_phone_number},#{bi_status})
+    </insert>
+    <delete id="deleteBuyer">
+        delete from buyer_info where bi_seq=#{seq}
+    </delete>
+    <select id="getBuyerInfoBySeq" resultType="com.twbang.product_management.data.BuyerVO">
+        select * from buyer_info where bi_seq=#{seq}
+    </select>
+    <update id="updateBuyer">
+        update buyer_info
+        set bi_id=#{bi_id}, bi_pwd=#{bi_pwd}, bi_birth=#{bi_birth}, bi_email=#{bi_email}, 
+        bi_name=#{bi_name}, bi_address=#{bi_address}, bi_phone_number=#{bi_phone_number}, bi_status=#{bi_status}, bi_mod_dt=NOW()
+        where bi_seq=#{bi_seq}
+    </update>
+    <select id="selectLatestDataSeq" resultType="java.lang.Integer">
+        select bi_seq from buyer_info
+        order by bi_seq desc limit 1
+    </select>
+    <insert id="insertBuyerHistory">
+        INSERT INTO product_work_db.buyer_history
+        (bh_type, bh_content, bh_bi_seq)
+        VALUES(#{bh_type},#{bh_content},#{bh_bi_seq});
+    </insert>
+</mapper>

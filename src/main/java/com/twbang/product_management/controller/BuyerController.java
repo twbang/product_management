@@ -2,7 +2,7 @@ package com.twbang.product_management.controller;
 
 import java.util.Map;
 
-import com.twbang.product_management.service.SellerService;
+import com.twbang.product_management.service.BuyerService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
@@ -12,15 +12,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class SellerController {
+public class BuyerController {
     @Autowired
-    SellerService service;
+    BuyerService service;
 
-    @GetMapping("/seller")
-    public String getSeller(Model model, @RequestParam @Nullable Integer offset,
+    @GetMapping("/buyer")
+    public String getBuyer(Model model, @RequestParam @Nullable Integer offset,
             @RequestParam @Nullable String keyword) {
-        Map<String, Object> resultMap = service.getSellerList(offset, keyword);
+        Map<String, Object> resultMap = service.getBuyerList(offset, keyword);
         model.addAttribute("data", resultMap);
-        return "/seller/list";
+        return "/buyer/list";
     }
 }

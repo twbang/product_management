@@ -3,10 +3,11 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.twbang.product_management.mapper.SellerMapper">
     <select id="getSellerInfo" resultType="com.twbang.product_management.data.SellerVO">
-        select * from seller_info order by si_seq desc limit 10 offset #{offset}
+        select * from seller_info where si_name like #{keyword}
+        order by si_seq desc limit 10 offset #{offset}
     </select>
     <select id="getSellerCount" resultType="java.lang.Integer">
-        select count(*) from seller_info
+        select count(*) from seller_info  where si_name like #{keyword}
     </select>
     <insert id="addSeller">
         insert into seller_info(si_id,si_pwd,si_birth,si_email,si_name,si_address,si_phone_number,si_status)
@@ -21,8 +22,17 @@
     </select>
     <update id="updateSeller">
         update seller_info
-        set si_id=#{si_id}, si_pwd=#{si_pwd}, si_birth=#{si_birth}, si_email=#{si_emil}, 
+        set si_id=#{si_id}, si_pwd=#{si_pwd}, si_birth=#{si_birth}, si_email=#{si_email}, 
         si_name=#{si_name}, si_address=#{si_address}, si_phone_number=#{si_phone_number}, si_status=#{si_status}, si_mod_dt=NOW()
         where si_seq=#{si_seq}
     </update>
+    <select id="selectLatestDataSeq" resultType="java.lang.Integer">
+        select si_seq from seller_info
+        order by si_seq desc limit 1
+    </select>
+    <insert id="insertSellerHistory">
+        INSERT INTO product_work_db.seller_history
+        (sh_type, sh_content, sh_si_seq)
+        VALUES(#{sh_type},#{sh_content},#{sh_si_seq});
+    </insert>
 </mapper>
