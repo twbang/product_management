@@ -7,6 +7,12 @@ $(function(){
         $(".popup .top_area h2").html("제품 추가");
         $(".popup .top_area p").html("제품 정보를 입력해주세요");
     })
+    $("#search_cate").click(function(){
+        $(".category_search").css("display", "block");
+    })
+    $("#cate_search_close").click(function(){
+        $(".category_search").css("display", "");
+    })
     $("#add_pro").click(function(){
         if(confirm("제품을 등록하시겠습니까?")==false) return;
         let pro_name = $("#pro_name").val();

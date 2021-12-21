@@ -51,7 +51,7 @@
                                 <td>${p.pi_seq}</td>
                                 <td>${p.pi_name}</td>
                                 <td>${p.pi_sub}</td>
-                                <td>카테고리</td>
+                                <td>${p.category_name}</td>
                                 <td>${p.pi_price}원</td>
                                 <td>${p.pi_like}</td>
                                 <td>${p.pi_reg_dt}</td>
@@ -100,6 +100,8 @@
             </div>
             <div class="content_area">
                 <input type="text" id="pro_name" placeholder="제품명"><br>
+                <input type="text" id="pro_cate" placeholder="제품 카테고리">
+                <button id="search_cate">카테고리 검색</button>
                 <input type="text" id="pro_sub" placeholder="제품설명"><br>
                 <input type="number" id="pro_price" placeholder="제품가격"><br>
                 <select id="pro_sell">
@@ -116,6 +118,20 @@
                 <button id="modify_pro">수정하기</button>
                 <button id="cancel_pro">취소하기</button>
             </div>
+        </div>
+    </div>
+    <div class="category_search">
+        <div class="cate_search_box">
+            <input type="text" id="cate_keyword" placeholder="카테고리를 입력하세요">
+            <button id="cate_search_btn"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="search_result">
+            <ul>
+                <li>노트북</li>
+            </ul>
+        </div>
+        <div class="pro_search_buttons">
+            <button id="cate_search_close">닫기</button>
         </div>
     </div>
 </body>

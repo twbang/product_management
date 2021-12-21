@@ -3,7 +3,13 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.twbang.product_management.mapper.ProductMapper">
     <select id="getProductInfo" resultType="com.twbang.product_management.data.ProductVO">
-        select * from product_info where pi_name like #{keyword}
+        select pi_seq, category_name, pi_name, pi_sub, pi_price, pi_like, pi_sell, pi_as, pi_reg_dt, pi_mod_dt from 
+        (
+            select a.*, b.pci_name as category_name
+            from product_info a left outer join product_category_info b 
+            on a.pi_pci_seq = b.pci_seq
+        ) c 
+        where pi_name like #{keyword}
         order by pi_seq desc limit 10 offset #{offset}
     </select>
     <select id="getProductCount" resultType="java.lang.Integer">

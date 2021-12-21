@@ -11,6 +11,7 @@ public class ProductVO {
     private Integer pi_pci_seq;
     private Integer pi_pmi_seq;
     private Integer pi_ci_seq;
+    private String category_name;
     private String pi_name;
     private String pi_sub;
     private Integer pi_price;

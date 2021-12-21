@@ -1,13 +1,13 @@
 main {background-color: #f3f3f3; position: relative;}
 main > h1 {font-size: 36px; padding-bottom: 30px; margin-bottom: 30px; border-bottom: 1px solid #ddd;}
-#add_product {
+#add_productmanager {
     position: absolute; right: 35px; top: 30px;
     border: 0; background-color: rgb(97, 118, 241); color: #fff;
     width: 170px; height: 40px; border-radius: 5px; font-size: 14px; font-weight: 300;
     cursor:pointer;
 }
-#add_product i {margin-right: 5px;}
-#add_product:hover {background-color: rgb(21, 51, 219);}
+#add_productmanager i {margin-right: 5px;}
+#add_productmanager:hover {background-color: rgb(21, 51, 219);}
 .search_box {background-color: #fff; display: inline-block; vertical-align: middle;
     padding: 10px 20px; border-radius: 99px; margin-right: 20px;
 }
@@ -63,8 +63,8 @@ font-size: 20px; cursor: pointer;
 .popup_wrap.open {display: block;}
 .popup {
     position: fixed; left: 50%; top: 50%; background-color: #fff;
-    margin-left: -150px; margin-top: -400px;
-    z-index: 999999; padding: 45px 0; width: 500px;
+    margin-left: -150px; margin-top: -425px;
+    z-index: 999999; padding: 35px 0; width: 500px;
     border-radius: 5px;
 }
 .popup .top_area {text-align: center; padding-bottom: 40px; border-bottom: 1px solid #ccc;}
@@ -79,7 +79,7 @@ font-size: 20px; cursor: pointer;
 .popup .content_area {padding: 40px 0; width: 350px; margin: 0 auto; font-size: 0;
     padding-bottom: 20px;
 }
-#pro_name,#pro_cate,#pro_sub,#pro_price,#pro_sell,#pro_as, #pro_score, #pro_sell {width: 100%; padding: 0; margin: 0; border: 1px solid #ccc;
+#pm_cate,#pm_id,#pm_pwd,#pm_birth,#pm_email,#pm_name, #pm_address, #pm_phone_number, #pm_status {width: 100%; padding: 0; margin: 0; border: 1px solid #ccc;
     font-size: 16px; font-weight: 400; padding: 10px 20px; box-sizing: border-box;
     border-radius: 15px; margin-bottom: 15px; outline:  none;
 }
@@ -88,12 +88,12 @@ font-size: 20px; cursor: pointer;
     border: 0; font-size: 18px; padding: 10px 20px; margin: 0 10px; color: #fff;
     cursor: pointer; border-radius: 15px;
 }
-.btn_area #add_pro {background-color: rgb(151, 165, 245);}
-.btn_area #add_pro:hover {background-color: rgb(21,51,219);}
-.btn_area #modify_pro {background-color: #999;}
-.btn_area #modify_pro:hover {background-color: #333;}
-.btn_area #cancel_pro {background-color: rgb(255,194,194);}
-.btn_area #cancel_pro:hover {background-color: rgb(255,83,83);}
+.btn_area #add_pm {background-color: rgb(151, 165, 245);}
+.btn_area #add_pm:hover {background-color: rgb(21,51,219);}
+.btn_area #modify_pm {background-color: rgb(151,165,245);}
+.btn_area #modify_pm:hover {background-color: rgb(21,51,219);}
+.btn_area #cancel_pm {background-color: rgb(255,194,194);}
+.btn_area #cancel_pm:hover {background-color: rgb(255,83,83);}
 
 .category_search {
     position: fixed; z-index: 99999999; background-color: #fff;

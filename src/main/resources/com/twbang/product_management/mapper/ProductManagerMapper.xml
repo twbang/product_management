@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.twbang.product_management.mapper.ProductManagerMapper">
+    <insert id="addProductManagerInfo">
+        insert into product_manager_info (pmi_pci_seq, pmi_id, pmi_pwd, pmi_name, pmi_birth, pmi_phone_number, pmi_email, pmi_status)
+        values (#{pmi_pci_seq},#{pmi_id},#{pmi_pwd},#{pmi_name},#{pmi_birth},#{pmi_phone_number},#{pmi_email},#{pmi_status})
+    </insert>
+    <select id="getProductManagerList" resultType="com.twbang.product_management.data.ProductManagerVO">
+        select pmi_seq, category_name, pmi_id, pmi_pwd, pmi_name, pmi_birth, pmi_phone_number, pmi_email, pmi_status from
+        (
+            select a.*, b.pci_name as category_name
+            from product_manager_info a left outer join product_category_info b 
+            on a.pmi_pci_seq = b.pci_seq
+        ) c
+        order by pmi_seq desc
+        limit 10 offset #{offset}
+    </select>
+    <select id="getProductManagerCnt" resultType="java.lang.Integer">
+        select count(*) from (
+            select a.*, b.pci_name as categroy_name
+            from product_manager_info a left outer join product_category_info b
+            on a.pmi_pci_seq = b.pci_seq
+        ) c
+    </select>
+    <select id="getCategoryByKeyword" resultType="com.twbang.product_management.data.ProductCategoryVO">
+        select pci_seq, pci_name from product_category_info where pci_name like #{keyword}
+    </select>
+    <delete id="deleteProductManager">
+        delete from product_manager_info where pmi_seq=#{seq}
+    </delete>
+    <select id="getProductManagerInfoBySeq" resultType="com.twbang.product_management.data.ProductManagerVO">
+        select * from product_manager_info where pmi_seq=#{seq}
+    </select>
+    <update id="updateProductManager">
+        update product_manager_info
+        set pmi_pci_seq=#{pmi_pci_seq},pmi_id=#{pmi_id},pmi_pwd=#{pmi_pwd},pmi_name=#{pmi_name},pmi_birth=#{pmi_birth},
+        pmi_phone_number=#{pmi_phone_number},pmi_email=#{pmi_email},pmi_status=#{pmi_status},pmi_mod_dt=NOW()
+        where pmi_seq=#{pmi_seq}
+    </update>
+</mapper>

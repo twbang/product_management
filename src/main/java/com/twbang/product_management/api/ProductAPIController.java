@@ -19,7 +19,7 @@ public class ProductAPIController {
     @Autowired ProductService service;
 
     @PostMapping("/product/add")
-    public Map<String, Object> postProductAdd(@RequestBody ProductVO data) {
+    public Map<String, Object> postProductAdd(@RequestBody ProductVO data) throws Exception{
         return service.addProduct(data);
     }
     @DeleteMapping("/product/delete")

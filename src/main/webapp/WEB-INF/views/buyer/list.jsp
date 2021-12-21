@@ -29,6 +29,7 @@
                         <tr>
                             <th>번호</th>
                             <th>아이디</th>
+                            <th>비밀번호</th>
                             <th>생년월일</th>
                             <th>이메일</th>
                             <th>이름</th>
@@ -43,27 +44,30 @@
                     <tbody>
                         <c:if test="${data.list.size() == 0}">
                             <tr>
-                                <td id="nodata" colspan="11">데이터가 없습니다.</td>
+                                <td id="nodata" colspan="12">데이터가 없습니다.</td>
                             </tr>
                         </c:if>
                         <c:forEach items="${data.list}" var="b">
                             <tr>
                                 <td>${b.bi_seq}</td>
                                 <td>${b.bi_id}</td>
+                                <td>${b.bi_pwd}</td>
                                 <td>${b.bi_birth}</td>
                                 <td>${b.bi_email}</td>
                                 <td>${b.bi_name}</td>
                                 <td>${b.bi_address}</td>
                                 <td>${b.bi_phone_number}</td>
-                                <c:if test="${b.bi_status==1}">
-                                    <td>사용대기중</td>
-                                </c:if>
-                                <c:if test="${b.bi_status==2}">
-                                    <td>사용정지</td>
-                                </c:if>
-                                <c:if test="${b.bi_status==0}">
-                                    <td>사용중</td>
-                                </c:if>
+                                <td>
+                                    <c:if test="${b.bi_status==1}">
+                                        사용대기중
+                                    </c:if>
+                                    <c:if test="${b.bi_status==2}">
+                                        사용정지
+                                    </c:if>
+                                    <c:if test="${b.bi_status==0}">
+                                        사용중
+                                    </c:if>
+                                </td>
                                 <td>${b.bi_reg_dt}</td>
                                 <td>${b.bi_mod_dt}</td>
                                 <td>
