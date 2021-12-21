@@ -9,4 +9,5 @@ public class ProductCategoryVO {
     private Integer pci_seq;
     private String pci_name;
     private Date pci_reg_dt;
+    private Integer pci_status;
 }

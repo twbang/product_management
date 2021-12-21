@@ -7,5 +7,5 @@ public class ProductManagerHistoryVO {
     private Integer pmh_seq;
     private String pmh_type;
     private String pmh_content;
-    private Integer pmh_pci_seq;
+    private Integer pmh_pmi_seq;
 }

@@ -124,6 +124,7 @@ $(function(){
             data:JSON.stringify(data),
             contentType:"application/json",
             success:function(r) {
+                console.log(r);
                 alert(r.message);
                 location.reload();
             }

@@ -36,8 +36,8 @@
         order by pi_seq desc limit 1
     </select>
     <insert id="insertProductHistory">
-        INSERT INTO product_work_db.department_history
-        (deph_type, deph_content, deph_pi_seq)
-        VALUES(#{deph_type},#{deph_content},#{deph_pi_seq});
+        INSERT INTO product_work_db.product_history
+        (ph_type, ph_content, ph_pi_seq)
+        VALUES(#{ph_type},#{ph_content},#{ph_pi_seq});
     </insert>
 </mapper>

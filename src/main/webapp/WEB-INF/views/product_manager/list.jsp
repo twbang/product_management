@@ -57,17 +57,15 @@
                                 <td>${pm.pmi_email}</td>
                                 <td>${pm.pmi_name}</td>
                                 <td>${pm.pmi_phone_number}</td>
-                                <td>
-                                    <c:if test="${pm.pmi_status==0}">
-                                        <td>관리중</td>
-                                    </c:if>
-                                    <c:if test="${pm.pmi_status==1}">
-                                        <td>관리대기중</td>
-                                    </c:if>
-                                    <c:if test="${pm.pmi_status==2}">
-                                        <td>휴직중</td>
-                                    </c:if>
-                                </td>
+                                <c:if test="${pm.pmi_status==0}">
+                                    <td>관리중</td>
+                                </c:if>
+                                <c:if test="${pm.pmi_status==1}">
+                                    <td>관리대기중</td>
+                                </c:if>
+                                <c:if test="${pm.pmi_status==2}">
+                                    <td>휴직중</td>
+                                </c:if>
                                 <td>${pm.pmi_reg_dt}</td>
                                 <td>${pm.pmi_mod_dt}</td>
                                 <td>

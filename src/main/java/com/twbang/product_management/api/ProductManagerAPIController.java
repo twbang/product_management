@@ -23,7 +23,7 @@ public class ProductManagerAPIController {
         System.out.println(data);
         return service.addProductManagerInfo(data);
     }
-    @GetMapping("/productmanager/keyword")
+    @GetMapping("/productcategory/keyword")
     public Map<String, Object> getCategoryByKeyword(@RequestParam @Nullable String keyword) {
         return service.getCategoryByKeyword(keyword);
     }

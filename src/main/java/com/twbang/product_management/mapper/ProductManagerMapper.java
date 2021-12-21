@@ -3,6 +3,7 @@ package com.twbang.product_management.mapper;
 import java.util.List;
 
 import com.twbang.product_management.data.ProductCategoryVO;
+import com.twbang.product_management.data.ProductManagerHistoryVO;
 import com.twbang.product_management.data.ProductManagerVO;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -16,4 +17,7 @@ public interface ProductManagerMapper {
     public void deleteProductManager(Integer seq);
     public ProductManagerVO getProductManagerInfoBySeq(Integer seq);
     public void updateProductManager(ProductManagerVO data);
+
+    public Integer selectLatestDataSeq();
+    public void insertProductManagerHistory(ProductManagerHistoryVO data);
 }

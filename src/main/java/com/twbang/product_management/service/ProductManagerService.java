@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.twbang.product_management.data.ProductCategoryVO;
+import com.twbang.product_management.data.ProductManagerHistoryVO;
 import com.twbang.product_management.data.ProductManagerVO;
 import com.twbang.product_management.mapper.ProductManagerMapper;
 
@@ -28,6 +29,14 @@ public class ProductManagerService {
         mapper.addProductManagerInfo(data);
         resultMap.put("status", true);
         resultMap.put("message", "제품관리자가 추가되었습니다.");
+
+        Integer seq = mapper.selectLatestDataSeq();
+        ProductManagerHistoryVO history = new ProductManagerHistoryVO();
+        history.setPmh_pmi_seq(seq);
+        history.setPmh_type("new");
+        String content = data.getPmi_pci_seq()+"|"+data.getPmi_id()+"|"+data.getPmi_pwd()+"|"+data.getPmi_name()+"|"+data.getPmi_birth()+"|"+data.getPmi_phone_number()+"|"+data.getPmi_email()+"|"+data.getPmi_status();
+        history.setPmh_content(content);
+        mapper.insertProductManagerHistory(history);
         return resultMap;
     }
 
@@ -75,6 +84,11 @@ public class ProductManagerService {
         mapper.deleteProductManager(seq);
         resultMap.put("status", true);
         resultMap.put("message", "제품관리자가 삭제되었습니다.");
+
+        ProductManagerHistoryVO history = new ProductManagerHistoryVO();
+        history.setPmh_pmi_seq(seq);
+        history.setPmh_type("delete");
+        mapper.insertProductManagerHistory(history);
         return resultMap;
     }
 
@@ -91,6 +105,13 @@ public class ProductManagerService {
 
         resultMap.put("status", true);
         resultMap.put("message", "수정되었습니다.");
+
+        ProductManagerHistoryVO history = new ProductManagerHistoryVO();
+        history.setPmh_pmi_seq(data.getPmi_seq());
+        history.setPmh_type("update");
+        String content = data.getPmi_pci_seq()+"|"+data.getPmi_id()+"|"+data.getPmi_pwd()+"|"+data.getPmi_name()+"|"+data.getPmi_birth()+"|"+data.getPmi_phone_number()+"|"+data.getPmi_email()+"|"+data.getPmi_status();
+        history.setPmh_content(content);
+        mapper.insertProductManagerHistory(history);
         return resultMap;
     }
 }

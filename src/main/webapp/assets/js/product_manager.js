@@ -15,20 +15,18 @@ $(function(){
     })
     $("#cate_search_btn").click(function(){
         $.ajax({
-            url:"/productmanager/keyword?keyword="+$("#cate_keyword").val(),
+            url:"/productcategory/keyword?keyword="+$("#cate_keyword").val(),
             type:"get",
             success:function(r) {
                 console.log(r);
                 $(".search_result ul").html("");
                 for(let i=0; i<r.list.length; i++) {
                     let str_status = "";
-                    if(r.list[i].pmi_status == 0) str_status = "관리중"
-                    if(r.list[i].pmi_status == 1) str_status = "관리대기중"
-                    if(r.list[i].pmi_status == 2) str_status = "휴직중"
+                    if(r.list[i].pci_status == 0) str_status = ""
                     let tag = 
                     '<li>'+
                         '<a href="#" data-cate-seq="'+r.list[i].pci_seq+'">'+r.list[i].pci_name+'</a>'+
-                        '<span class="status'+r.list[i].pmi_status+'">'+str_status+'</span>'+
+                        '<span class="status'+r.list[i].pci_status+'">'+str_status+'</span>'+
                     '</li>';
                     $(".search_result ul").append(tag);
                 }
@@ -38,7 +36,7 @@ $(function(){
                     let seq = $(this).attr("data-cate-seq");
                     let name = $(this).html();
 
-                    $("#pm_cate").attr("data-pm-seq", seq);
+                    $("#pm_cate").attr("data-cate-seq", seq);
                     $("#pm_cate").val(name);
 
                     $(".search_result ul").html("");
@@ -50,7 +48,7 @@ $(function(){
     })
     $("#add_pm").click(function(){
         if(confirm("판매자를 등록하시겠습니까?")==false) return;
-        let category_name = $("#pm_cate").attr("data-pm-seq");
+        let category_name = $("#pm_cate").attr("data-cate-seq");
         let pm_id = $("#pm_id").val();
         let pm_pwd = $("#pm_pwd").val();
         let pm_birth = $("#pm_birth").val();
@@ -96,6 +94,7 @@ $(function(){
         $("#pm_status").val("0").prop("selected", true);
 
         $(".popup_wrap").removeClass("open");
+        $(".category_search").removeClass("open");
     })
 
     $(".delete_btn").click(function(){
@@ -112,19 +111,23 @@ $(function(){
         })
     })
 
-    let modify_data_seq=0;
+    let modify_seq=0;
     $(".modify_btn").click(function(){
-        modify_data_seq=$(this).attr("data-seq");
-        $(".popup_wrap").addClass("open");
-        $("#add_pm").css("display", "none");
-        $("#modify_pm").css("display", "inline-block");
-        $(".popup .top_area h2").html("제품관리자 수정");
-        $(".popup .top_area p").html("수정할 내용을 입력해주세요");
+        let seq=$(this).attr("data-seq");
+        modify_seq=seq;
         $.ajax({
             type:"get",
             url:"/productmanager/get?seq="+$(this).attr("data-seq"),
             success:function(r) {
-                $("#pm_cate").val(r.data.pmi_pci_seq);
+                console.log(r)
+                $(".popup_wrap").addClass("open");
+                $("#add_pm").css("display", "none");
+                $("#modify_pm").css("display", "inline-block");
+                $(".popup .top_area h2").html("제품관리자 수정");
+                $(".popup .top_area p").html("수정할 내용을 입력해주세요");
+
+                $("#pm_cate").attr("data-cate-seq", r.pmi_pci_seq)
+                $("#pm_cate").val(r.data.category_name);
                 $("#pm_id").val(r.data.pmi_id);
                 $("#pm_pwd").val(r.data.pmi_pwd);
                 $("#pm_birth").val(r.data.pmi_birth);
@@ -138,26 +141,17 @@ $(function(){
 
     $("#modify_pm").click(function(){
         if(confirm("수정하시겠습니까?")==false) return;
-
-        let category_name = $("#pm_cate").attr("data-pm-seq");
-        let pm_id = $("#pm_id").val();
-        let pm_pwd = $("#pm_pwd").val();
-        let pm_birth = $("#pm_birth").val();
-        let pm_email = $("#pm_email").val();
-        let pm_name = $("#pm_name").val();
-        let pm_phone_number = $("#pm_phone_number").val();
-        let pm_status = $("#pm_status option:selected").val();
-
+        
         let data = {
-            pmi_seq:modify_data_seq,
-            pmi_pci_seq:category_name,
-            pmi_id:pm_id,
-            pmi_pwd:pm_pwd,
-            pmi_birth:pm_birth,
-            pmi_email:pm_email,
-            pmi_name:pm_name,
-            pmi_phone_number:pm_phone_number,
-            pmi_status:pm_status
+            pmi_seq:modify_seq,
+            pmi_pci_seq:$("#pm_cate").attr("data-cate-seq"),
+            pmi_id:$("#pm_id").val(),
+            pmi_pwd:$("#pm_pwd").val(),
+            pmi_birth:$("#pm_birth").val(),
+            pmi_email:$("#pm_email").val(),
+            pmi_name:$("#pm_name").val(),
+            pmi_phone_number:$("#pm_phone_number").val(),
+            pmi_status:$("#pm_status option:selected").val()
         }
 
         $.ajax({
