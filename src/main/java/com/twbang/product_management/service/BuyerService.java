@@ -7,6 +7,7 @@ import java.util.Map;
 import com.twbang.product_management.data.BuyerHistoryVO;
 import com.twbang.product_management.data.BuyerVO;
 import com.twbang.product_management.mapper.BuyerMapper;
+import com.twbang.product_management.utils.AESAlgorithm;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,7 +45,7 @@ public class BuyerService {
         return resultMap;
     }
 
-    public Map<String, Object> addBuyer(BuyerVO data) {
+    public Map<String, Object> addBuyer(BuyerVO data) throws Exception {
         Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
 
         if (data.getBi_id() == null || data.getBi_name().equals("")) {
@@ -82,6 +83,10 @@ public class BuyerService {
             resultMap.put("message", "생년월일을 입력하세요.");
             return resultMap;
         }
+
+        String pwd = data.getBi_pwd();
+        String encrypted = AESAlgorithm.Encrypt(pwd);
+        data.setBi_pwd(encrypted);
 
         mapper.addBuyer(data);
         resultMap.put("status", true);
@@ -129,7 +134,7 @@ public class BuyerService {
         BuyerHistoryVO history = new BuyerHistoryVO();
         history.setBh_bi_seq(data.getBi_seq());
         history.setBh_type("update");
-        String content = data.getBi_id() + "|" + data.getBi_pwd() + "|" + data.getBi_birth() + "|" + data.getBi_name()
+        String content = data.getBi_id() + "|" + data.getBi_birth() + "|" + data.getBi_name()
                 + "|" + data.getBi_address() + "|" + data.getBi_phone_number() + "|" + data.getBi_status();
         history.setBh_content(content);
         mapper.insertBuyerHistory(history);

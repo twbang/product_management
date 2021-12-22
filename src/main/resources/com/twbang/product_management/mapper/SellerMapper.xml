@@ -22,7 +22,7 @@
     </select>
     <update id="updateSeller">
         update seller_info
-        set si_id=#{si_id}, si_pwd=#{si_pwd}, si_birth=#{si_birth}, si_email=#{si_email}, 
+        set si_id=#{si_id}, si_birth=#{si_birth}, si_email=#{si_email}, 
         si_name=#{si_name}, si_address=#{si_address}, si_phone_number=#{si_phone_number}, si_status=#{si_status}, si_mod_dt=NOW()
         where si_seq=#{si_seq}
     </update>

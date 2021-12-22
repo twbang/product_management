@@ -30,7 +30,6 @@
                             <th>번호</th>
                             <th>담당제품과</th>
                             <th>아이디</th>
-                            <th>비밀번호</th>
                             <th>생년월일</th>
                             <th>이메일</th>
                             <th>이름</th>
@@ -44,7 +43,7 @@
                     <tbody>
                         <c:if test="${data.list.size() == 0}">
                             <tr>
-                                <td id="nodata" colspan="12">데이터가 없습니다.</td>
+                                <td id="nodata" colspan="11">데이터가 없습니다.</td>
                             </tr>
                         </c:if>
                         <c:forEach items="${data.list}" var="pm">
@@ -52,20 +51,21 @@
                                 <td>${pm.pmi_seq}</td>
                                 <td>${pm.category_name}</td>
                                 <td>${pm.pmi_id}</td>
-                                <td>${pm.pmi_pwd}</td>
                                 <td>${pm.pmi_birth}</td>
                                 <td>${pm.pmi_email}</td>
                                 <td>${pm.pmi_name}</td>
                                 <td>${pm.pmi_phone_number}</td>
-                                <c:if test="${pm.pmi_status==0}">
-                                    <td>관리중</td>
-                                </c:if>
-                                <c:if test="${pm.pmi_status==1}">
-                                    <td>관리대기중</td>
-                                </c:if>
-                                <c:if test="${pm.pmi_status==2}">
-                                    <td>휴직중</td>
-                                </c:if>
+                                <td>
+                                    <c:if test="${pm.pmi_status==0}">
+                                        <span style="background-color: greenyellow;">관리중</span>
+                                    </c:if>
+                                    <c:if test="${pm.pmi_status==1}">
+                                        <span style="background-color: yellow;">관리대기중</span>
+                                    </c:if>
+                                    <c:if test="${pm.pmi_status==2}">
+                                        <span style="background-color: red;">휴직중</span>
+                                    </c:if>
+                                </td>
                                 <td>${pm.pmi_reg_dt}</td>
                                 <td>${pm.pmi_mod_dt}</td>
                                 <td>
@@ -103,6 +103,7 @@
                 <button id="search_cate">카테고리 검색</button>
                 <input type="text" id="pm_id" placeholder="제품관리자 아이디"><br>
                 <input type="password" id="pm_pwd" placeholder="제품관리자 비밀번호"><br>
+                <input type="password" id="pm_pwd_confirm" placeholder="비밀번호 확인"><br>
                 <input type="text" id="pm_birth" placeholder="제품관리자 생년월일"><br>
                 <input type="text" id="pm_email" placeholder="제품관리자 이메일"><br>
                 <input type="text" id="pm_name" placeholder="제품관리자 이름"><br>

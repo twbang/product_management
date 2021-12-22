@@ -11,12 +11,22 @@ $(function(){
         if(confirm("일반유저를 등록하시겠습니까?")==false) return;
         let buy_id = $("#buy_id").val();
         let buy_pwd = $("#buy_pwd").val();
+        let buy_pwd_confirm = $("#buy_pwd_confirm").val();
         let buy_birth = $("#buy_birth").val();
         let buy_email = $("#buy_email").val();
         let buy_name = $("#buy_name").val();
         let buy_address = $("#buy_address").val();
         let buy_phone_number = $("#buy_phone_number").val();
         let buy_status = $("#buy_status option:selected").val();
+
+        if(buy_pwd == '') {
+            alert("비밀번호를 입력해주세요");
+            return;
+        }
+        if(buy_pwd != buy_pwd_confirm) {
+            alert("비밀번호와 비밀번호 확인이 일치하지 않습니다.");
+            return;
+        }
 
         let data = {
             bi_id:buy_id,
@@ -84,7 +94,8 @@ $(function(){
             url:"/buyer/get?seq="+$(this).attr("data-seq"),
             success:function(r) {
                 $("#buy_id").val(r.data.bi_id);
-                $("#buy_pwd").val(r.data.bi_pwd);
+                $("#buy_pwd").val("*******").prop("disabled", true);
+                $("#buy_pwd_confirm").val("*******").prop("disabled", true);
                 $("#buy_birth").val(r.data.bi_birth);
                 $("#buy_email").val(r.data.bi_email);
                 $("#buy_name").val(r.data.bi_name);
@@ -99,7 +110,6 @@ $(function(){
         if(confirm("수정하시겠습니까?")==false) return;
 
         let buy_id = $("#buy_id").val();
-        let buy_pwd = $("#buy_pwd").val();
         let buy_birth = $("#buy_birth").val();
         let buy_email = $("#buy_email").val();
         let buy_name = $("#buy_name").val();
@@ -110,7 +120,6 @@ $(function(){
         let data = {
             bi_seq:modify_data_seq,
             bi_id:buy_id,
-            bi_pwd:buy_pwd,
             bi_birth:buy_birth,
             bi_email:buy_email,
             bi_name:buy_name,

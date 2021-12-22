@@ -22,7 +22,7 @@
     </select>
     <update id="updateBuyer">
         update buyer_info
-        set bi_id=#{bi_id}, bi_pwd=#{bi_pwd}, bi_birth=#{bi_birth}, bi_email=#{bi_email}, 
+        set bi_id=#{bi_id}, bi_birth=#{bi_birth}, bi_email=#{bi_email}, 
         bi_name=#{bi_name}, bi_address=#{bi_address}, bi_phone_number=#{bi_phone_number}, bi_status=#{bi_status}, bi_mod_dt=NOW()
         where bi_seq=#{bi_seq}
     </update>

@@ -12,7 +12,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class DashboardService {
-    @Autowired DashboardMapper mapper;
+    @Autowired
+    DashboardMapper mapper;
 
     public Map<String, Object> getCounts() {
         List<Integer> productCntList = new ArrayList<Integer>();
@@ -48,5 +49,16 @@ public class DashboardService {
         map.put("productmanager", pmCntList);
         map.put("pagemanager", pgmCntList);
         return map;
+    }
+
+    public Map<String, Object> getUpdateDate() {
+        Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
+
+        resultMap.put("product", mapper.getProductUpdateDate());
+        resultMap.put("seller", mapper.getSellerUpdateDate());
+        resultMap.put("buyer", mapper.getBuyerUpdateDate());
+        resultMap.put("product_manager", mapper.getProductManagerUpdateDate());
+
+        return resultMap;
     }
 }

@@ -7,7 +7,7 @@
         values (#{pmi_pci_seq},#{pmi_id},#{pmi_pwd},#{pmi_name},#{pmi_birth},#{pmi_phone_number},#{pmi_email},#{pmi_status})
     </insert>
     <select id="getProductManagerList" resultType="com.twbang.product_management.data.ProductManagerVO">
-        select pmi_seq, category_name, pmi_id, pmi_pwd, pmi_name, pmi_birth, pmi_phone_number, pmi_email, pmi_status, pmi_reg_dt, pmi_mod_dt from
+        select pmi_seq, category_name, pmi_id, pmi_name, pmi_birth, pmi_phone_number, pmi_email, pmi_status, pmi_reg_dt, pmi_mod_dt from
         (
             select a.*, b.pci_name as category_name
             from product_manager_info a left outer join product_category_info b 
@@ -30,14 +30,14 @@
         delete from product_manager_info where pmi_seq=#{seq}
     </delete>
     <select id="getProductManagerInfoBySeq" resultType="com.twbang.product_management.data.ProductManagerVO">
-        select pmi_seq, pmi_pci_seq, pmi_id, pmi_pwd, pmi_name, pmi_birth, pmi_phone_number, pmi_email, pmi_status, pci_name as category_name
+        select pmi_seq, pmi_pci_seq, pmi_id, pmi_name, pmi_birth, pmi_phone_number, pmi_email, pmi_status, pci_name as category_name
         from product_manager_info a left outer join product_category_info b
         on a.pmi_pci_seq = b.pci_seq
         where pmi_seq=#{seq}
     </select>
     <update id="updateProductManager">
         update product_manager_info
-        set pmi_pci_seq=#{pmi_pci_seq},pmi_id=#{pmi_id},pmi_pwd=#{pmi_pwd},pmi_name=#{pmi_name},pmi_birth=#{pmi_birth},
+        set pmi_pci_seq=#{pmi_pci_seq},pmi_id=#{pmi_id},pmi_name=#{pmi_name},pmi_birth=#{pmi_birth},
         pmi_phone_number=#{pmi_phone_number},pmi_email=#{pmi_email},pmi_status=#{pmi_status},pmi_mod_dt=NOW()
         where pmi_seq=#{pmi_seq}
     </update>

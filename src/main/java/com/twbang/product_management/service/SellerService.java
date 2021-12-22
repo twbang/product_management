@@ -7,6 +7,7 @@ import java.util.Map;
 import com.twbang.product_management.data.SellerHistoryVO;
 import com.twbang.product_management.data.SellerVO;
 import com.twbang.product_management.mapper.SellerMapper;
+import com.twbang.product_management.utils.AESAlgorithm;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,7 +45,7 @@ public class SellerService {
         return resultMap;
     }
 
-    public Map<String, Object> addSeller(SellerVO data) {
+    public Map<String, Object> addSeller(SellerVO data) throws Exception {
         Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
 
         if (data.getSi_id() == null || data.getSi_name().equals("")) {
@@ -82,6 +83,10 @@ public class SellerService {
             resultMap.put("message", "생년월일을 입력하세요.");
             return resultMap;
         }
+
+        String pwd = data.getSi_pwd();
+        String encrypted = AESAlgorithm.Encrypt(pwd);
+        data.setSi_pwd(encrypted);
 
         mapper.addSeller(data);
         resultMap.put("status", true);
@@ -129,7 +134,7 @@ public class SellerService {
         SellerHistoryVO history = new SellerHistoryVO();
         history.setSh_si_seq(data.getSi_seq());
         history.setSh_type("update");
-        String content = data.getSi_id() + "|" + data.getSi_pwd() + "|" + data.getSi_birth() + "|" + data.getSi_name()
+        String content = data.getSi_id() + "|" + data.getSi_birth() + "|" + data.getSi_name()
                 + "|" + data.getSi_address() + "|" + data.getSi_phone_number() + "|" + data.getSi_status();
         history.setSh_content(content);
         mapper.insertSellerHistory(history);

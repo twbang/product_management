@@ -16,19 +16,25 @@
         select count(*) from product_info where pi_name like #{keyword}
     </select>
     <insert id="addProduct">
-        insert into product_info(pi_name,pi_sub,pi_price,pi_sell,pi_as)
+        insert into product_info(pi_pci_seq,pi_name,pi_sub,pi_price,pi_sell,pi_as)
         values
-        (#{pi_name},#{pi_sub},#{pi_price},#{pi_sell},#{pi_as})
+        (#{pi_pci_seq},#{pi_name},#{pi_sub},#{pi_price},#{pi_sell},#{pi_as})
     </insert>
+    <select id="getCategoryByKeyword" resultType="com.twbang.product_management.data.ProductCategoryVO">
+        select pci_seq, pci_name, pci_status from product_category_info where pci_name like #{keyword}
+    </select>
     <delete id="deleteProduct">
         delete from product_info where pi_seq=#{seq}
     </delete>
     <select id="getProductInfoBySeq" resultType="com.twbang.product_management.data.ProductVO">
-        select * from product_info where pi_seq=#{seq}
+        select pi_seq, pi_pci_seq, pi_name, pi_sub, pi_price, pi_like, pi_sell, pi_as, pci_name as category_name
+        from product_info a left outer join product_category_info b 
+        on a.pi_pci_seq = b.pci_seq 
+        where pi_seq=#{seq}
     </select>
     <update id="updateProduct">
         update product_info
-        set pi_name=#{pi_name},pi_sub=#{pi_sub},pi_price=#{pi_price},pi_sell=#{pi_sell},pi_as=#{pi_as},pi_mod_dt=NOW()
+        set pi_pci_seq=#{pi_pci_seq},pi_name=#{pi_name},pi_sub=#{pi_sub},pi_price=#{pi_price},pi_sell=#{pi_sell},pi_as=#{pi_as},pi_mod_dt=NOW()
         where pi_seq=#{pi_seq}
     </update>
     <select id="selectLatestDataSeq" resultType="java.lang.Integer">

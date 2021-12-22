@@ -51,11 +51,21 @@ $(function(){
         let category_name = $("#pm_cate").attr("data-cate-seq");
         let pm_id = $("#pm_id").val();
         let pm_pwd = $("#pm_pwd").val();
+        let pm_pwd_confirm = $("#pm_pwd_confirm").val();
         let pm_birth = $("#pm_birth").val();
         let pm_email = $("#pm_email").val();
         let pm_name = $("#pm_name").val();
         let pm_phone_number = $("#pm_phone_number").val();
         let pm_status = $("#pm_status option:selected").val();
+
+        if(pm_pwd == '') {
+            alert("비밀번호를 입력해주세요");
+            return;
+        }
+        if(pm_pwd != pm_pwd_confirm) {
+            alert("비밀번호와 비밀번호 확인이 일치하지 않습니다.");
+            return;
+        }
 
         let data = {
             pmi_pci_seq:category_name,
@@ -126,10 +136,11 @@ $(function(){
                 $(".popup .top_area h2").html("제품관리자 수정");
                 $(".popup .top_area p").html("수정할 내용을 입력해주세요");
 
-                $("#pm_cate").attr("data-cate-seq", r.pmi_pci_seq)
+                $("#pm_cate").attr("data-cate-seq", r.pmi_pci_seq);
                 $("#pm_cate").val(r.data.category_name);
                 $("#pm_id").val(r.data.pmi_id);
-                $("#pm_pwd").val(r.data.pmi_pwd);
+                $("#pm_pwd").val("*********").prop("disabled", true);
+                $("#pm_pwd_confirm").val("*********").prop("disabled", true);
                 $("#pm_birth").val(r.data.pmi_birth);
                 $("#pm_email").val(r.data.pmi_email);
                 $("#pm_name").val(r.data.pmi_name);
@@ -146,7 +157,6 @@ $(function(){
             pmi_seq:modify_seq,
             pmi_pci_seq:$("#pm_cate").attr("data-cate-seq"),
             pmi_id:$("#pm_id").val(),
-            pmi_pwd:$("#pm_pwd").val(),
             pmi_birth:$("#pm_birth").val(),
             pmi_email:$("#pm_email").val(),
             pmi_name:$("#pm_name").val(),

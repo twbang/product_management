@@ -127,7 +127,7 @@
         </div>
         <div class="search_result">
             <ul>
-                <li>노트북</li>
+                
             </ul>
         </div>
         <div class="pro_search_buttons">

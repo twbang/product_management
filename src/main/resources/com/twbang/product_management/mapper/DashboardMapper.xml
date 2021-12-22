@@ -54,4 +54,17 @@
     <select id="getDayoffPGMCnt" resultType="java.lang.Integer">
         select count(*) from web_manager_info where wmi_status=1
     </select>
+
+    <select id="getProductUpdateDate" resultType="java.util.Date">
+        select ph_reg_dt from product_history order by ph_reg_dt desc limit 1
+    </select>
+    <select id="getSellerUpdateDate" resultType="java.util.Date">
+        select sh_reg_dt from seller_history order by sh_reg_dt desc limit 1
+    </select>
+    <select id="getBuyerUpdateDate" resultType="java.util.Date">
+        select bh_reg_dt from buyer_history order by bh_reg_dt desc limit 1
+    </select>
+    <select id="getProductManagerUpdateDate" resultType="java.util.Date">
+        select pmh_reg_dt from product_manager_history order by pmh_reg_dt desc limit 1
+    </select>
 </mapper>

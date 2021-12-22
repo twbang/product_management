@@ -20,7 +20,7 @@ public class SellerAPIController {
     SellerService service;
 
     @PostMapping("/seller/add")
-    public Map<String, Object> postSellerAdd(@RequestBody SellerVO data) {
+    public Map<String, Object> postSellerAdd(@RequestBody SellerVO data) throws Exception {
         return service.addSeller(data);
     }
 
@@ -28,10 +28,12 @@ public class SellerAPIController {
     public Map<String, Object> deleteSeller(@RequestParam Integer seq) {
         return service.deleteSeller(seq);
     }
+
     @GetMapping("/seller/get")
     public Map<String, Object> getSellerInfoBySeq(@RequestParam Integer seq) {
         return service.getSellerInfoBySeq(seq);
     }
+
     @PatchMapping("/seller/update")
     public Map<String, Object> patchSellerInfo(@RequestBody SellerVO data) {
         return service.updateSellerInfo(data);

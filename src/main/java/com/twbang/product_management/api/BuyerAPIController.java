@@ -20,7 +20,7 @@ public class BuyerAPIController {
     BuyerService service;
 
     @PostMapping("/buyer/add")
-    public Map<String, Object> postBuyerAdd(@RequestBody BuyerVO data) {
+    public Map<String, Object> postBuyerAdd(@RequestBody BuyerVO data) throws Exception {
         return service.addBuyer(data);
     }
 

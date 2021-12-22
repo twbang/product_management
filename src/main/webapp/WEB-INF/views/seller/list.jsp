@@ -99,6 +99,7 @@
             <div class="content_area">
                 <input type="text" id="sel_id" placeholder="판매자 아이디"><br>
                 <input type="password" id="sel_pwd" placeholder="판매자 비밀번호"><br>
+                <input type="password" id="sel_pwd_confirm" placeholder="판매자 비밀번호 확인"><br>
                 <input type="text" id="sel_birth" placeholder="판매자 생년월일"><br>
                 <input type="text" id="sel_email" placeholder="판매자 이메일"><br>
                 <input type="text" id="sel_name" placeholder="판매자 이름"><br>

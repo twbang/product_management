@@ -11,12 +11,22 @@ $(function(){
         if(confirm("판매자를 등록하시겠습니까?")==false) return;
         let sel_id = $("#sel_id").val();
         let sel_pwd = $("#sel_pwd").val();
+        let sel_pwd_confirm = $("#sel_pwd_confirm").val();
         let sel_birth = $("#sel_birth").val();
         let sel_email = $("#sel_email").val();
         let sel_name = $("#sel_name").val();
         let sel_address = $("#sel_address").val();
         let sel_phone_number = $("#sel_phone_number").val();
         let sel_status = $("#sel_status option:selected").val();
+
+        if(sel_pwd == '') {
+            alert("비밀번호를 입력해주세요");
+            return;
+        }
+        if(sel_pwd != sel_pwd_confirm) {
+            alert("비밀번호와 비밀번호 확인이 일치하지 않습니다.");
+            return;
+        }
 
         let data = {
             si_id:sel_id,
@@ -84,7 +94,8 @@ $(function(){
             url:"/seller/get?seq="+$(this).attr("data-seq"),
             success:function(r) {
                 $("#sel_id").val(r.data.si_id);
-                $("#sel_pwd").val(r.data.si_pwd);
+                $("#sel_pwd").val("*******").prop("disabled", true);
+                $("#sel_pwd_confirm").val("*******").prop("disabled", true);
                 $("#sel_birth").val(r.data.si_birth);
                 $("#sel_email").val(r.data.si_email);
                 $("#sel_name").val(r.data.si_name);
@@ -99,7 +110,6 @@ $(function(){
         if(confirm("수정하시겠습니까?")==false) return;
 
         let sel_id = $("#sel_id").val();
-        let sel_pwd = $("#sel_pwd").val();
         let sel_birth = $("#sel_birth").val();
         let sel_email = $("#sel_email").val();
         let sel_name = $("#sel_name").val();
@@ -110,7 +120,6 @@ $(function(){
         let data = {
             si_seq:modify_data_seq,
             si_id:sel_id,
-            si_pwd:sel_pwd,
             si_birth:sel_birth,
             si_email:sel_email,
             si_name:sel_name,

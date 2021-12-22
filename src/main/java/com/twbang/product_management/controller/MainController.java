@@ -9,10 +9,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class MainController {
-    @Autowired DashboardService service;
+    @Autowired
+    DashboardService service;
+
     @GetMapping("/")
     public String getMain(Model model) {
         model.addAttribute("cnt", service.getCounts());
+        model.addAttribute("update", service.getUpdateDate());
         return "/admin";
     }
 }
