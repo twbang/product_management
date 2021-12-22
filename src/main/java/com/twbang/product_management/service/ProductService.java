@@ -10,6 +10,8 @@ import com.twbang.product_management.data.ProductVO;
 import com.twbang.product_management.mapper.ProductMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -90,17 +92,25 @@ public class ProductService {
         return resultMap;
     }
 
-    public Map<String, Object> deleteProduct(Integer seq) {
+    public ResponseEntity <Map<String, Object>> deleteProduct(Integer seq) {
         Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
-        mapper.deleteProduct(seq);
-        resultMap.put("status", true);
-        resultMap.put("message", "제품이 삭제되었습니다.");
-
-        ProductHistoryVO history = new ProductHistoryVO();
-        history.setPh_pi_seq(seq);
-        history.setPh_type("delete");
-        mapper.insertProductHistory(history);
-        return resultMap;
+        Integer cnt = mapper.isExistProduct(seq);
+        if(cnt == 0) {
+            resultMap.put("status", false);
+            resultMap.put("message", "삭제에 실패했습니다. (존재하지 않는 제품 정보)");
+            return new ResponseEntity<Map<String, Object>>(resultMap, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        else {
+            mapper.deleteProduct(seq);
+            resultMap.put("status", true);
+            resultMap.put("message", "제품이 삭제되었습니다.");
+    
+            ProductHistoryVO history = new ProductHistoryVO();
+            history.setPh_pi_seq(seq);
+            history.setPh_type("delete");
+            mapper.insertProductHistory(history);
+            return new ResponseEntity<Map<String, Object>>(resultMap, HttpStatus.ACCEPTED);
+        }
     }
 
     public Map<String, Object> getProductInfoBySeq(Integer seq) {

@@ -27,4 +27,6 @@ public interface ProductMapper {
     public Integer selectLatestDataSeq();
 
     public void insertProductHistory(ProductHistoryVO data);
+
+    public Integer isExistProduct(Integer seq);
 }
