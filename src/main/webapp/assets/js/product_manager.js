@@ -136,7 +136,7 @@ $(function(){
                 $(".popup .top_area h2").html("제품관리자 수정");
                 $(".popup .top_area p").html("수정할 내용을 입력해주세요");
 
-                $("#pm_cate").attr("data-cate-seq", r.pmi_pci_seq);
+                $("#pm_cate").attr("data-cate-seq", r.data.pmi_pci_seq);
                 $("#pm_cate").val(r.data.category_name);
                 $("#pm_id").val(r.data.pmi_id);
                 $("#pm_pwd").val("*********").prop("disabled", true);
@@ -174,5 +174,13 @@ $(function(){
                 location.reload();
             }
         })
+    })
+    $("#search_btn").click(function(){
+        location.href="/product_manager?keyword="+$("#keyword").val();
+    })
+    $("#keyword").keydown(function(e){
+        if(e.keyCode == 13) {
+            $("#search_btn").trigger("click");
+        }
     })
 })

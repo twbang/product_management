@@ -100,7 +100,7 @@
             </div>
             <div class="content_area">
                 <input type="text" id="pro_name" placeholder="제품명"><br>
-                <input type="text" id="pro_cate" placeholder="제품 카테고리">
+                <input type="text" id="pro_cate" placeholder="제품 카테고리" disabled>
                 <button id="search_cate">카테고리 검색</button>
                 <input type="text" id="pro_sub" placeholder="제품설명"><br>
                 <input type="number" id="pro_price" placeholder="제품가격"><br>

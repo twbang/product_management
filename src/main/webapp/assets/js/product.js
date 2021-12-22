@@ -116,7 +116,8 @@ $(function(){
             type:"get",
             url:"/product/get?seq="+$(this).attr("data-seq"),
             success:function(r) {
-                $("#pro_cate").attr("data-cate-seq", r.pi_pci_seq);
+                console.log(r);
+                $("#pro_cate").attr("data-cate-seq", r.data.pi_pci_seq);
                 $("#pro_cate").val(r.data.category_name);
                 $("#pro_name").val(r.data.pi_name);
                 $("#pro_sub").val(r.data.pi_sub);

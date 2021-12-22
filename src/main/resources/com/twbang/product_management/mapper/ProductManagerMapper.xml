@@ -13,6 +13,7 @@
             from product_manager_info a left outer join product_category_info b 
             on a.pmi_pci_seq = b.pci_seq
         ) c
+        where pmi_name like #{keyword}
         order by pmi_seq desc
         limit 10 offset #{offset}
     </select>

@@ -1,7 +1,11 @@
 package com.twbang.product_management.controller;
 
-import com.twbang.product_management.service.ProductManagerService;
+import java.util.Map;
 
+import com.twbang.product_management.service.ProductManagerService;
+import com.twbang.product_management.utils.AESAlgorithm;
+
+import org.apache.ibatis.annotations.ResultMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
@@ -13,8 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ProductManagerController {
     @Autowired ProductManagerService service;
     @GetMapping("/product_manager")
-    public String getProductManager(Model model, @RequestParam @Nullable String type, @RequestParam @Nullable String keyword, @RequestParam @Nullable Integer offset){
-        model.addAttribute("data", service.getProductManagerList(type, keyword, offset));
+    public String getProductManager(Model model, @RequestParam @Nullable String type, @RequestParam @Nullable String keyword, @RequestParam @Nullable Integer offset) throws Exception{
+        Map<String, Object> resultMap = service.getProductManagerList(type, keyword, offset);
+        model.addAttribute("data", resultMap);
         return "/product_manager/list";
     }
 }
