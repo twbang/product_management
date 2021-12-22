@@ -79,7 +79,13 @@ font-size: 20px; cursor: pointer;
 .popup .content_area {padding: 40px 0; width: 350px; margin: 0 auto; font-size: 0;
     padding-bottom: 20px;
 }
-#pro_name,#pro_cate,#pro_sub,#pro_price,#pro_sell,#pro_as, #pro_score, #pro_sell {width: 100%; padding: 0; margin: 0; border: 1px solid #ccc;
+.popup .content_area #search_cate {padding: 0; margin: 0; border: 1px solid #ccc;
+    font-size: 16px; font-weight: 400; padding: 10px 20px; box-sizing: border-box;
+    border-radius: 15px; margin-bottom: 15px; outline:  none;}
+#pro_cate {width: calc(63% - 10px); padding: 0; margin: 0; border: 1px solid #ccc;
+    font-size: 16px; font-weight: 400; padding: 10px 20px; box-sizing: border-box;
+    border-radius: 15px; margin-bottom: 15px; outline:  none;}
+#pro_name,#pro_sub,#pro_price,#pro_sell,#pro_as, #pro_score, #pro_sell {width: 100%; padding: 0; margin: 0; border: 1px solid #ccc;
     font-size: 16px; font-weight: 400; padding: 10px 20px; box-sizing: border-box;
     border-radius: 15px; margin-bottom: 15px; outline:  none;
 }
@@ -99,18 +105,20 @@ font-size: 20px; cursor: pointer;
     position: fixed; z-index: 99999999; background-color: #fff;
     left: 50%; margin-left: -75px; top: 50%; margin-top: -150px;
     box-shadow: 0 0 5px rgba(0,0,0,0.3); width: 350px; display: none;
+    border-radius: 15px;
 }
 .cate_search_box {
     padding: 0 10px; font-size: 0; border-bottom: 1px solid #000;
 }
 .cate_search_box * {font-size: 18px;}
 .cate_search_box input {
-    bottom: 0; padding: 0; margin: 0; outline: none; width: 95%;
-    padding: 10px 0;
+    bottom: 0; padding: 0; margin: 0; outline: none; width: 80%;
+    padding: 10px 0; border-radius: 15px;
 }
 .dep_search_box button {
-    bottom: 0; padding: 0; margin: 0; outline: none; cursor: pointer;
+    bottom: 0; padding: 0; margin: 0; outline: none; cursor: pointer; width: calc(20%-10px);
     position: absolute; right: 10px; top: 9px; background-color: transparent; color: #666;
+    border-radius: 15px;
 }
 .search_result {
     min-height: 300px; overflow-y: scroll; height: 200px;

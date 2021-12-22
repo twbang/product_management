@@ -107,6 +107,7 @@
                 <select id="pro_sell">
                     <option value="0">판매중</option>
                     <option value="1">판매완료</option>
+                    <option value="2">판매중지</option>
                 </select><br>
                 <select id="pro_as">
                     <option value="0">정상사용</option>

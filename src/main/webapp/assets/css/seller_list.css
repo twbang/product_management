@@ -79,7 +79,7 @@ font-size: 20px; cursor: pointer;
 .popup .content_area {padding: 40px 0; width: 350px; margin: 0 auto; font-size: 0;
     padding-bottom: 20px;
 }
-#sel_id,#sel_pwd,#sel_birth,#sel_email,#sel_name, #sel_address, #sel_phone_number, #sel_status {width: 100%; padding: 0; margin: 0; border: 1px solid #ccc;
+#sel_id,#sel_pwd,#sel_pwd_confirm,#sel_birth,#sel_email,#sel_name, #sel_address, #sel_phone_number, #sel_status {width: 100%; padding: 0; margin: 0; border: 1px solid #ccc;
     font-size: 16px; font-weight: 400; padding: 10px 20px; box-sizing: border-box;
     border-radius: 15px; margin-bottom: 15px; outline:  none;
 }
