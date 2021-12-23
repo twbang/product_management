@@ -3,9 +3,6 @@ package com.twbang.product_management.controller;
 import java.util.Map;
 
 import com.twbang.product_management.service.ProductManagerService;
-import com.twbang.product_management.utils.AESAlgorithm;
-
-import org.apache.ibatis.annotations.ResultMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;

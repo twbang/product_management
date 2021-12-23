@@ -9,7 +9,7 @@
         select count(*) from product_info where pi_sell=1
     </select>
     <select id="getNonpurchaseProductCnt" resultType="java.lang.Integer">
-        select count(*) from product_info where pi_status=1
+        select count(*) from product_info where pi_sell=2
     </select>
     <select id="getFixProductCnt" resultType="java.lang.Integer">
         select count(*) from product_info where pi_as=1

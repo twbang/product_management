@@ -56,12 +56,12 @@ public class ProductService {
         }
         if (data.getPi_sub() == null || data.getPi_sub().equals("")) {
             resultMap.put("status", false);
-            resultMap.put("message", "제품명을 입력하세요.");
+            resultMap.put("message", "제품설명을 입력하세요.");
             return resultMap;
         }
         if (data.getPi_price() == null || data.getPi_price() == 0) {
             resultMap.put("status", false);
-            resultMap.put("message", "제품명을 입력하세요.");
+            resultMap.put("message", "제품가격을 입력하세요.");
             return resultMap;
         }
 

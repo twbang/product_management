@@ -56,6 +56,9 @@
                                 <td>${p.pi_like}</td>
                                 <td>${p.pi_reg_dt}</td>
                                 <td>${p.pi_mod_dt}</td>
+                                <c:if test="${p.pi_sell==2}">
+                                    <td>판매중지</td>
+                                </c:if>
                                 <c:if test="${p.pi_sell==1}">
                                     <td>판매완료</td>
                                 </c:if>
