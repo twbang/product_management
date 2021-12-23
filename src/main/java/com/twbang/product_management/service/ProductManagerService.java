@@ -33,6 +33,12 @@ public class ProductManagerService {
             resultMap.put("message", "id를 입력해주세요");
             return resultMap;
         }
+        if (data.getPmi_pwd() == "" || data.getPmi_pwd() == null) {
+            resultMap.put("status", false);
+            resultMap.put("reason", "pwd");
+            resultMap.put("message", "pwd를 입력해주세요");
+            return resultMap;
+        }
         if (data.getPmi_name() == "" || data.getPmi_name() == null) {
             resultMap.put("status", false);
             resultMap.put("reason", "name");

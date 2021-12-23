@@ -81,7 +81,7 @@ public class SellerService {
         if (data.getSi_birth() == null || data.getSi_birth().equals("")) {
             resultMap.put("status", false);
             resultMap.put("message", "생년월일을 입력하세요.");
-            return resultMap;
+            return resultMap;   
         }
 
         String pwd = data.getSi_pwd();
